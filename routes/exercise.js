@@ -24,8 +24,8 @@ router.post('/new-user', async (req, res) => {
 // Get all users, if there are not users in database return an error
 router.get('/users', async (req, res) => {
 	const users = await User.find();
-	if (!users.users)
-		return res.status(400).json({ error: 'No users in database.' });
+
+	if (!users) return res.status(400).json({ error: 'No users in database.' });
 
 	return res.json({ users });
 });
@@ -62,6 +62,20 @@ router.post('/add', async (req, res) => {
 	new_exercise.save();
 
 	return res.json(new_exercise);
+});
+
+// Search exercises by user_id, return the user object with added array log and count
+router.get('/log/:id', async (req, res) => {
+	const { id } = req.params;
+
+	// Check if id is valid
+	if (!isValidObjectId(id))
+		return res.status(400).json({ error: 'Invalid user id.' });
+
+	// Get all exercises created by user
+	const logs = await Exercise.find({ user: id });
+
+	return res.json({ log: logs, count: logs.length });
 });
 
 module.exports = router;
