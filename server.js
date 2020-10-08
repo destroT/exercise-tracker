@@ -20,8 +20,7 @@ mongoose
 	);
 
 // Load Routes
-//const indexRouter = require('./routes/index');
-const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/exercise');
 
 // Initialize
 const app = express();
@@ -33,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // initialize routes
 //app.use('/.netlify/functions/', indexRouter);
-app.use('/api', apiRouter);
+app.use('/api/exercise', apiRouter);
 
 // Run server
 const PORT = process.env.PORT || 8000;
