@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise Tracker</title>
+    <link rel="stylesheet" href="../public/stylsheets/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="bg-light py-5">
+            <div class="container text-center">
+              <h1 class="display-3">Exercise tracker</h1>
+              <p class="lead">This is an exercise for APIs and Microservices hosted by FreeCodeCamp.</p>
+            </div>
+        </div>
+
+
+        <section class="pt-5">
+            <div class="row row-cols-1 row-cols-md-2  row-cols-lg-2 row-cols-xl-2">
+                <div class="col">
+                    <form class="needs-validation" action="/api/exercise/new-user" method="post" novalidate>
+                        <div class="mb-3">
+                            <h2>Create a New User</h2>
+                            <p class="lead">POST /api/exercise/new-user</p>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="username" class="col-sm-2 col-form-label">Username:</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="username" id="username" class="form-control" required/>
+                                <div class="invalid-feedback">
+                                    Please provide a username.
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="mb-3 text-center">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">
+                                    Submit
+                                </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col">
+                    <form class="needs-validation" action="/api/exercise/add" method="post" novalidate>
+                        <div class="mb-3">
+                            <h2>Add exercise</h2>
+                            <p class="lead">POST /api/exercise/add</p>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="user" class="col-sm-2 col-form-label">UserId*:</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="user" id="user" class="form-control" required/>
+                                <div class="invalid-feedback">
+                                    Please provide a valid ID.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="description" class="col-sm-2 col-form-label">Description*:</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="description" id="description" class="form-control" required/>
+                                <div class="invalid-feedback">
+                                    Please provide a description.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="duration" class="col-sm-2 col-form-label">Duration*:</label>
+                            <div class="col-sm-10">
+                                <input type="number" name="duration" id="duration" class="form-control" min="0"  aria-describedby="durationHelpBlock" required/>
+                                <div id="durationHelpBlock" class="form-text">mins.</div>
+                                <div class="invalid-feedback">
+                                    Please provide a valid number.
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="date" class="col-sm-2 col-form-label">Date:</label>
+                            <div class="col-sm-10">
+                                <input type="date" name="date" id="date" class="form-control"/>
+                            </div>
+                            
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer fixed-bottom bg-dark py-3">
+        <div class="container">
+            <div class="row row-cols-2 justify-content-center">
+                <div class="col text-center"><p class="lead text-white-50">Author: Tommaso Destro</p></div>
+                <div class="col text-center">
+                    
+                    <a href="https://github.com/destroT" class="stretched-link link-light navbar-link">
+                        <object data="./images/github.svg" type="image/svg+xml" height="40" width="40" style="pointer-events: none;">
+                            <span>Your browser doesn't support SVG images</span>
+                        </object>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+        </script>
+</body>
+
+</html>
