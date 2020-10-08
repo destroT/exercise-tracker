@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const Exercise = require('../models/Exercise');
+const { mongoose, isValidObjectId } = require('mongoose');
 
 // Create a new user. return error if username invalid or alredy taken.
 router.post('/new-user', async (req, res) => {
@@ -33,14 +34,19 @@ router.get('/users', async (req, res) => {
 router.post('/add', async (req, res) => {
 	const { user, description, duration, date } = req.body;
 
+	// Check inputs
 	if (!user || !description || !duration || !Number(duration))
 		return res
 			.status(400)
 			.json({ error: 'Invalid request, check all the fields' });
 
-	//Check the user id
+	// Check if id is valid
+	if (!isValidObjectId(user))
+		return res.status(400).json({ error: 'Invalid user id.' });
+
+	//Search by user id
 	const check_user = await User.findById(user);
-	if (!check_user) return res.status(400).json({ error: 'Invalid user id.' });
+	if (!check_user) return res.status(400).json({ error: 'User not found.' });
 
 	// Create the new istance
 	const new_exercise = new Exercise({
@@ -48,8 +54,11 @@ router.post('/add', async (req, res) => {
 		description: description,
 		duration: duration,
 	});
+
+	// Check if i need to add a date
 	if (date) new_exercise.date = date;
 
+	// Save in DB
 	new_exercise.save();
 
 	return res.json(new_exercise);
