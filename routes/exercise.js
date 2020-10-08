@@ -68,14 +68,47 @@ router.post('/add', async (req, res) => {
 router.get('/log/:id', async (req, res) => {
 	const { id } = req.params;
 
+	let { from, to, limit } = req.query;
 	// Check if id is valid
 	if (!isValidObjectId(id))
 		return res.status(400).json({ error: 'Invalid user id.' });
 
+	if (limit && Number(limit)) limit = Number(limit);
+
+	let queryObj = { user: id };
+
+	let range = from || to ? getRangeDate(from, to) : null;
+
+	if (range) queryObj.date = range;
 	// Get all exercises created by user
-	const logs = await Exercise.find({ user: id });
+	const logs = await Exercise.find(queryObj).limit(limit);
 
 	return res.json({ log: logs, count: logs.length });
 });
+
+function getRangeDate(from, to) {
+	from = castDate(from);
+	to = castDate(to);
+
+	// Default Value
+	let start = new Date(0);
+	let end = new Date(86400000000000);
+
+	if (from != 'Invalid Date') start = from;
+	if (to != 'Invalid Date') end = to;
+	if (start > end) {
+		let temp = end;
+		end = start;
+		start = temp;
+	}
+
+	// Return Object for query
+	return { $gte: start, $lte: end };
+}
+
+function castDate(date) {
+	const cast = new Date(date);
+	return cast ? cast : null;
+}
 
 module.exports = router;
