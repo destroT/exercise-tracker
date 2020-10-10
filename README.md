@@ -16,4 +16,4 @@
 
 ## Backend: Node.js, MongoDB Atlas(via mongoose)
 
-## Frontend: Bootstrap(v5), notyf
+## Frontend: Axios, Bootstrap(v5), notyf
