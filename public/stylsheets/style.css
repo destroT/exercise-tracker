@@ -1,26 +1,12 @@
-.navbar-link {
-	text-decoration: none;
-}
-.navbar-link:hover {
-	color: var(--primary);
-}
-
-.icon-github {
-	background: black;
-	border: 1px solid black;
-	border-radius: 50%;
-	font-size: 40px;
-}
-.icon-gmail {
-	background: white;
+i {
+	font-size: 30px;
 }
 
 .icon-link {
 	text-decoration: none;
-	color: white;
+	color: var(--bg-light);
 }
 
-.icon-link:hover {
-	background-image: var(--bs-gradient);
-	color: var(--bg-primary);
+ul {
+	list-style-type: none;
 }
