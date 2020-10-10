@@ -71,7 +71,7 @@ router.post('/add', async (req, res) => {
 		description: new_exercise.description,
 		duration: new_exercise.duration,
 		_id: check_user._id,
-		date: new_exercise.datetoDateString(),
+		date: new_exercise.date.toDateString(),
 	});
 });
 
