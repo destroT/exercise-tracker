@@ -8,16 +8,19 @@ const { mongoose, isValidObjectId } = require('mongoose');
 router.post('/new-user', async (req, res) => {
 	const { username } = req.body;
 
-	if (!username) return res.status(400).json({ error: 'Invalid username' });
+	console.log(`Creating new user ${username}`);
+	if (!username) return res.status(400).send({ error: 'Invalid username' });
 
 	// Check if username alredy exists
 	const user = await User.findOne({ username: username });
 	if (user != undefined)
-		return res.status(400).json({ error: 'Username alredy taken' });
+		return res.status(400).send({ error: 'Username alredy taken' });
 
 	//Create User istance
 	const new_user = new User({ username: username });
 	new_user.save();
+
+	console.log(`New user created`);
 	return res.json(new_user);
 });
 
@@ -34,19 +37,20 @@ router.get('/users', async (req, res) => {
 router.post('/add', async (req, res) => {
 	const { user, description, duration, date } = req.body;
 
+	console.log('New post request to add a new exercise');
 	// Check inputs
 	if (!user || !description || !duration || !Number(duration))
 		return res
 			.status(400)
-			.json({ error: 'Invalid request, check all the fields' });
+			.send({ error: 'Invalid request, check all the fields' });
 
 	// Check if id is valid
 	if (!isValidObjectId(user))
-		return res.status(400).json({ error: 'Invalid user id.' });
+		return res.status(400).send({ error: 'Invalid user id.' });
 
 	//Search by user id
 	const check_user = await User.findById(user);
-	if (!check_user) return res.status(400).json({ error: 'User not found.' });
+	if (!check_user) return res.status(400).send({ error: 'User not found.' });
 
 	// Create the new istance
 	const new_exercise = new Exercise({
@@ -61,6 +65,7 @@ router.post('/add', async (req, res) => {
 	// Save in DB
 	new_exercise.save();
 
+	console.log('New exercise created!');
 	return res.json(new_exercise);
 });
 

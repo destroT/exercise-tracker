@@ -13,7 +13,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.16.1",
     "mongoose": "^5.10.8",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "notyf": "^3.9.0"
   },
   "engines": {
     "node": "12.18.3"
