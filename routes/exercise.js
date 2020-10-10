@@ -67,11 +67,11 @@ router.post('/add', async (req, res) => {
 
 	console.log('New exercise created!');
 	return res.json({
-		_id: check_user._id,
 		username: check_user.username,
-		date: new_exercise.datetoDateString(),
-		duration: new_exercise.duration,
 		description: new_exercise.description,
+		duration: new_exercise.duration,
+		_id: check_user._id,
+		date: new_exercise.datetoDateString(),
 	});
 });
 
