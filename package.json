@@ -1,22 +1,21 @@
 {
-  "name": "exercise-tracker",
-  "version": "1.0.0",
-  "description": "Exercise Tracker, FreeCodeCamp APIs and Microservices",
-  "author": "Tommaso Destro",
-  "private": true,
-  "license": "ISC",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.16.1",
-    "mongoose": "^5.10.8",
-    "nodemon": "^2.0.4",
-    "notyf": "^3.9.0"
-  },
-  "engines": {
-    "node": "12.18.3"
-  }
+	"name": "exercise-tracker",
+	"version": "1.0.0",
+	"description": "Exercise Tracker, FreeCodeCamp APIs and Microservices",
+	"author": "Tommaso Destro",
+	"private": true,
+	"license": "ISC",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.16.1",
+		"mongoose": "^5.10.8",
+		"nodemon": "^2.0.4"
+	},
+	"engines": {
+		"node": "12.18.3"
+	}
 }
