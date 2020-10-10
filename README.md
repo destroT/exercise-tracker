@@ -1,4 +1,4 @@
-# Exercise Tracker REST API (https://url-shortener-td.herokuapp.com/)
+# Exercise Tracker REST API (https://exercise-tracker-td.herokuapp.com/)
 
 ![N|Solid](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fa%2Fa9%2FHeroku_logo.png&f=1&nofb=1)
 
