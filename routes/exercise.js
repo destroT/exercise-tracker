@@ -62,6 +62,7 @@ router.post('/add', async (req, res) => {
 	// Check if i need to add a date
 	if (date) new_exercise.date = date;
 
+	new_exercise.date.toDateString();
 	// Save in DB
 	new_exercise.save();
 
@@ -82,7 +83,7 @@ router.get('/log/:id', async (req, res) => {
 	let { from, to, limit } = req.query;
 	// Check if id is valid
 	if (!isValidObjectId(id))
-		return res.status(400).json({ error: 'Invalid user id.' });
+		return res.status(400).send({ error: 'Invalid user id.' });
 
 	if (limit && Number(limit)) limit = Number(limit);
 
@@ -91,10 +92,19 @@ router.get('/log/:id', async (req, res) => {
 	let range = from || to ? getRangeDate(from, to) : null;
 
 	if (range) queryObj.date = range;
+	// Get user istance
+	const user = await User.findById(id);
+	if (!user) res.status(400).send({ error: 'User not found.' });
+
 	// Get all exercises created by user
 	const logs = await Exercise.find(queryObj).limit(limit);
 
-	return res.json({ log: logs, count: logs.length });
+	return res.json({
+		_id: user._id,
+		username: user.username,
+		count: logs.length,
+		log: logs,
+	});
 });
 
 function getRangeDate(from, to) {
