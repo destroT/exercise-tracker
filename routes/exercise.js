@@ -30,13 +30,13 @@ router.get('/users', async (req, res) => {
 
 	if (!users) return res.status(400).json({ error: 'No users in database.' });
 
-	return res.json({ users });
+	return res.json(users);
 });
 
 // Create a new Exercise, return an error if the input are ot valid
 router.post('/add', async (req, res) => {
 	const { user, description, duration, date } = req.body;
-
+	console.log(req.body);
 	console.log('New post request to add a new exercise');
 	// Check inputs
 	if (!user || !description || !duration || !Number(duration))
