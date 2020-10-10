@@ -4,15 +4,24 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Author: Tommaso Destro, FreeCodeCAmp project">
     <title>Exercise Tracker</title>
     
     <link rel="stylesheet" href="./stylsheets/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+
+    <link rel="stylesheet" href="./icons/style.css">
+
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js" integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    
+    <script defer type="module" src="./javascript/api.js"></script>
 </head>
 
 <body>
-
+    
     <div class="container">
 
         <div class="bg-light py-5">
@@ -102,28 +111,15 @@
      
     </div>
 
-    <footer class="footer fixed-bottom bg-dark py-3">
-        <div class="container">
-            <div class="row row-cols-2 justify-content-center">
-                <div class="col text-center"><p class="lead text-white-50">Author: Tommaso Destro</p></div>
-                <div class="col text-center">
-                    
-                    <a href="https://github.com/destroT" class="stretched-link link-light navbar-link">
-                        <object data="./images/github.svg" type="image/svg+xml" height="40" width="40" style="pointer-events: none;">
-                            <span>Your browser doesn't support SVG images</span>
-                        </object>
-                    </a>
-
-                </div>
-            </div>
+    <footer class="footer fixed-bottom py-3 bg-light" >
+        <div class="container text-center text-muted">
+            Author: Tommaso Destro Copyright &copy; 2020 
+            <a href="https://github.com/destroT/exercise-tracker" class="icon-link"><i class="icon-github"></i></a> 
         </div>
     </footer>
      
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js" integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     
-    
+
     <script>
         
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -146,7 +142,7 @@
         })();
     </script>
     
-    <script type="module" src="./javascript/api.js"></script>
+   
 </body>
 
 </html>
