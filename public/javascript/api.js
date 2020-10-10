@@ -42,7 +42,7 @@ window.onload = () => {
 		if (exercise.checkValidity() === false) return;
 
 		const body = new URLSearchParams({
-			user: exercise.user.value,
+			userId: exercise.userId.value,
 			description: exercise.description.value,
 			duration: exercise.duration.value,
 			date: exercise.date.value,

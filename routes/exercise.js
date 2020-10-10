@@ -35,21 +35,21 @@ router.get('/users', async (req, res) => {
 
 // Create a new Exercise, return an error if the input are ot valid
 router.post('/add', async (req, res) => {
-	const { user, description, duration, date } = req.body;
+	const { userId, description, duration, date } = req.body;
 	console.log(req.body);
 	console.log('New post request to add a new exercise');
 	// Check inputs
-	if (!user || !description || !duration || !Number(duration))
+	if (!userId || !description || !duration || !Number(duration))
 		return res
 			.status(400)
 			.send({ error: 'Invalid request, check all the fields' });
 
 	// Check if id is valid
-	if (!isValidObjectId(user))
+	if (!isValidObjectId(userId))
 		return res.status(400).send({ error: 'Invalid user id.' });
 
 	//Search by user id
-	const check_user = await User.findById(user);
+	const check_user = await User.findById(userId);
 	if (!check_user) return res.status(400).send({ error: 'User not found.' });
 
 	// Create the new istance
