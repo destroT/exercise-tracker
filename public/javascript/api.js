@@ -37,7 +37,7 @@ window.onload = () => {
 	});
 
 	exercise.addEventListener('submit', e => {
-		e.preventDefault();
+		//e.preventDefault();
 
 		if (exercise.checkValidity() === false) return;
 

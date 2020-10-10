@@ -36,7 +36,7 @@ router.get('/users', async (req, res) => {
 // Create a new Exercise, return an error if the input are ot valid
 router.post('/add', async (req, res) => {
 	const { userId, description, duration, date } = req.body;
-	console.log(req.body);
+
 	console.log('New post request to add a new exercise');
 	// Check inputs
 	if (!userId || !description || !duration || !Number(duration))
@@ -66,7 +66,13 @@ router.post('/add', async (req, res) => {
 	new_exercise.save();
 
 	console.log('New exercise created!');
-	return res.json(new_exercise);
+	return res.json({
+		_id: check_user._id,
+		username: check_user.username,
+		description: new_exercise.description,
+		duration: new_exercise.duration,
+		date: new_exercise.date,
+	});
 });
 
 // Search exercises by user_id, return the user object with added array log and count
