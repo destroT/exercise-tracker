@@ -69,9 +69,9 @@ router.post('/add', async (req, res) => {
 	return res.json({
 		_id: check_user._id,
 		username: check_user.username,
-		description: new_exercise.description,
+		date: new_exercise.datetoDateString(),
 		duration: new_exercise.duration,
-		date: new_exercise.date,
+		description: new_exercise.description,
 	});
 });
 
