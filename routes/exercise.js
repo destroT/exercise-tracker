@@ -77,8 +77,8 @@ router.post('/add', async (req, res) => {
 });
 
 // Search exercises by user_id, return the user object with added array log and count
-router.get('/log/:id', async (req, res) => {
-	const { id } = req.params;
+router.get('/log', async (req, res) => {
+	const id = req.query.userId;
 
 	let { from, to, limit } = req.query;
 	// Check if id is valid
